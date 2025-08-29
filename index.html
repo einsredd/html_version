@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Vertrag bearbeiten – S211547</title>
+
+  <!-- Font Awesome for the bolt icon -->
+  <script src="https://kit.fontawesome.com/4e7b1e7b7c.js" crossorigin="anonymous"></script>
+  
+  <style>
+    /* ---- Base resets & typography ---- */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    /* ---- Container ---- */
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .form-container h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    /* ---- Grid layout ---- */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---- Field wrapper: label above input ---- */
+    .form-field {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-field label {
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .form-field input {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 0.95rem;
+    }
+    .form-field input[readonly] {
+      background: #eee;
+    }
+
+    /* ---- Icon inside input ---- */
+    .icon-input {
+      position: relative;
+    }
+    .icon-input i {
+      position: absolute;
+      left: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      pointer-events: none;
+    }
+    .icon-input input {
+      padding-left: 2rem;
+    }
+
+    /* ---- Buttons ---- */
+    .button-group {
+      display: flex;
+      justify-content: center;
+    }
+    .btn {
+      flex: 1;
+      margin: 0 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border: 1px solid #888;
+      border-radius: 30px;
+      background: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:first-child { margin-left: 0; }
+    .btn:last-child  { margin-right: 0; }
+
+    .btn.save:hover   { background: #28a745; color: #fff; border-color: #28a745; }
+    .btn.back:hover   { background: #007bff; color: #fff; border-color: #007bff; }
+    .btn.delete:hover { background: #dc3545; color: #fff; border-color: #dc3545; }
+    .main-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .form-container {
+      flex: 0 0 800px;
+      max-width: 800px;
+      margin: 0;
+    }
+    .sidebar {
+      flex: 0 0 300px;
+      background: #f9f9f9;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    #change-log {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #change-log th,
+    #change-log td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-wrapper">
+  <div class="form-container">
+    <h2 id="contract-title">S211547</h2>
+
+    <form id="contract-form">
+      <div class="form-grid">
+
+        <div class="form-field">
+          <label for="id">ID:</label>
+          <input type="text" id="id" name="id" value="21140751" readonly>
+        </div>
+
+        <div class="form-field">
+          <label for="leadId">Lead ID:</label>
+          <input type="text" id="leadId" name="leadId" value="21140751" readonly>
+        </div>
+
+        <div class="form-field">
+          <label for="contractId">Vertrags-ID:</label>
+          <input type="text" id="contractId" name="contractId" value="S211547" readonly>
+        </div>
+
+        <div class="form-field">
+          <label for="kunde">Kunde:</label>
+          <input type="text" id="kunde" name="kunde" value="MatrixAG 56053478">
+        </div>
+
+        <div class="form-field icon-input">
+          <label for="typ">Typ:</label>
+          <i class="fas fa-bolt"></i>
+          <input type="text" id="typ" name="typ" value="⚡">
+        </div>
+
+        <div class="form-field">
+          <label for="art">Art:</label>
+          <input type="text" id="art" name="art" value="Strom">
+        </div>
+
+        <div class="form-field">
+          <label for="produkt">Produkt:</label>
+          <input type="text" id="produkt" name="produkt" value="ALEX MATRIX 20">
+        </div>
+
+        <div class="form-field">
+          <label for="marke">Marke:</label>
+          <input type="text" id="marke" name="marke" value="ALEX2021">
+        </div>
+
+        <div class="form-field">
+          <label for="verbrauch">Verbrauch:</label>
+          <input type="text" id="verbrauch" name="verbrauch" value="50.000 kWh">
+        </div>
+
+        <div class="form-field">
+          <label for="plz">PLZ:</label>
+          <input type="text" id="plz" name="plz" maxlength="5" inputmode="numeric">
+        </div>
+<!--
+        <div class="form-field">
+          <label for="strasse">Straße:</label>
+          <input type="text" id="strasse" name="strasse">
+        </div>
+-->
+        <div class="form-field">
+          <label for="stadt">Stadt:</label>
+          <input type="text" id="stadt" name="stadt" readonly>
+        </div>
+
+        <div class="form-field">
+          <label for="organisation">Organisation:</label>
+          <input type="text" id="organisation" name="organisation" value="Kaffee Energie">
+        </div>
+
+        <div class="form-field">
+          <label for="status">Status:</label>
+          <input type="text" id="status" name="status" value="Aktiv">
+        </div>
+
+        <div class="form-field">
+          <label for="eingangsdatum">Eingangsdatum:</label>
+          <input type="date" id="eingangsdatum" name="eingangsdatum" value="2025-07-24">
+        </div>
+
+        <div class="form-field">
+          <label for="datenstand">Datenstand:</label>
+          <input type="date" id="datenstand" name="datenstand" value="2025-07-24">
+        </div>
+
+        <div class="form-field">
+          <label for="points">Provision (Punkte):</label>
+          <input type="number" id="points" name="points" value="5">
+        </div>
+
+        <div class="form-field">
+          <label for="provision">Provision:</label>
+          <input type="text" id="provision" name="provision" value="5 €">
+        </div>
+
+        <div class="form-field">
+          <label for="Total">Total Commission:</label>
+          <input type="number" id="points" name="points" value="5">
+        </div>
+
+
+
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="btn save">Save</button>
+      </div>
+    </form>
+  </div>
+    <div class="sidebar">
+      <h3>Change Log</h3>
+      <table id="change-log">
+        <thead>
+          <tr><th>Time</th><th>Field</th><th>Change</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div> <!-- end main-wrapper -->
+
+  <!-- jQuery (from CDN) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function() {
+      // Save handler
+      $('#contract-form').on('submit', function(e) {
+        e.preventDefault();
+        const newId = $('#contractId').val();
+        alert('Vertrag erfolgreich gespeichert.');
+        $('#contract-title').text(newId);
+        document.title = 'Vertrag bearbeiten – ' + newId;
+        history.replaceState(null, '', '?id=' + encodeURIComponent(newId));
+      });
+
+      // Back handler
+      $('.btn.back').on('click', function() {
+        window.history.back();
+      });
+
+      // Delete handler
+      $('.btn.delete').on('click', function() {
+        if (confirm('Möchten Sie diesen Vertrag wirklich löschen?')) {
+          $.ajax({
+            url: '/api/contracts/' + $('#contractId').val(),
+            method: 'DELETE',
+            success: function() {
+              alert('Vertrag gelöscht.');
+              window.location.href = '/contracts.html';
+            },
+            error: function() {
+              alert('Fehler beim Löschen des Vertrags.');
+            }
+          });
+        }
+      });
+
+      // PLZ (zip code) auto city fill
+      $('#plz').on('input', function () {
+        const zip = $(this).val();
+        if (zip.length === 5 && /^\d{5}$/.test(zip)) {
+          $.get(`https://api.zippopotam.us/de/${zip}`, function (data) {
+            const city = data.places?.[0]?.['place name'] || '';
+            $('#stadt').val(city);
+          }).fail(function () {
+            $('#stadt').val('');
+          });
+        } else {
+          $('#stadt').val('');
+        }
+      });
+
+      // Simplified total calculation
+      $('#points, #provision').on('input', function() {
+        const total = (+$('#points').val() || 0) + (+$('#provision').val() || 0);
+        $('#Total').val(total);
+      }).trigger('input');
+
+      // Log value changes to sidebar with debounce
+      $('#contract-form input').each(function() {
+        const $input = $(this);
+        $input.data('prev', $input.val());
+        $input.data('timer', null);
+        $input.on('input', function() {
+          clearTimeout($input.data('timer'));
+          const timer = setTimeout(function() {
+            const oldVal = $input.data('prev');
+            const newVal = $input.val();
+            if (newVal !== oldVal) {
+              const time = new Date().toLocaleTimeString();
+              const field = $input.attr('name') || $input.attr('id');
+              const changeDesc = `${oldVal} → ${newVal}`;
+              $('#change-log tbody').append(
+                `<tr><td>${time}</td><td>${field}</td><td>${changeDesc}</td></tr>`
+              );
+              $input.data('prev', newVal);
+            }
+          }, 2000);
+          $input.data('timer', timer);
+        });
+      });
+    });
+    
+  </script>
+
+</body>
+</html>
