@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Example Article — Wikipeek</title>
+  <!--
+    Wikipedia‑INSPIRED demo page (no trademarks or affiliation).
+    Single file, GitHub Pages ready. Images use inline SVG data URIs so they
+    render anywhere without extra assets.
+  -->
+  <style>
+    :root{
+      --bg:#f8f9fa;          /* Wikipedia-ish background */
+      --text:#202122;        /* main text */
+      --muted:#4a4a4a;       /* subtle text */
+      --blue:#0645ad;        /* link color */
+      --border:#a2a9b1;      /* light border */
+      --panel:#fff;          /* panels */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    a{color:var(--blue); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 16px; border-bottom:1px solid var(--border);
+      background:#fff; position:sticky; top:0; z-index:50;
+    }
+    .brand{font-weight:700; letter-spacing:.2px}
+    .userlinks a{margin-left:12px; color:#3a3a3a}
+
+    /* Layout */
+    .wrap{display:grid; grid-template-columns:210px 1fr; gap:16px; max-width:1200px; margin:0 auto; padding:16px}
+    .sidebar{
+      padding:12px; border:1px solid var(--border); background:var(--panel);
+    }
+    .sidebar h3{margin:8px 0; font-size:14px; border-bottom:1px solid var(--border); padding-bottom:6px}
+    .sidebar ul{list-style:none; margin:8px 0; padding:0}
+    .sidebar li{margin:6px 0}
+
+    .article{
+      padding:20px; border:1px solid var(--border); background:var(--panel);
+    }
+    .tagline{color:#54595d; font-size:13px; margin-top:-6px}
+    .article h1{margin:0 0 6px 0; font-size:28px}
+
+    /* Infobox */
+    .infobox{
+      width:300px; float:right; margin:0 0 16px 16px; background:#f8f9fa;
+      border:1px solid var(--border); font-size:13px
+    }
+    .infobox .hd{background:#eee; padding:8px 10px; font-weight:700; border-bottom:1px solid var(--border)}
+    .infobox .cell{padding:8px 10px; border-top:1px solid var(--border)}
+    .infobox .cell img{width:100%; height:auto; display:block; border:0}
+
+    /* TOC */
+    .toc{border:1px solid var(--border); background:#fff; padding:10px; margin:12px 0; font-size:14px}
+    .toc h3{margin:0 0 8px 0; font-size:14px}
+    .toc ol{margin:0; padding-left:20px}
+
+    figure{margin:0;}
+    figcaption{font-size:12px; color:#5a5a5a; margin-top:4px}
+
+    /* Footer */
+    footer{max-width:1200px; margin:24px auto; color:#6a6a6a; font-size:12px; padding:0 16px}
+
+    @media (max-width: 900px){
+      .wrap{grid-template-columns:1fr}
+      .infobox{float:none; width:100%; margin:0 0 12px 0}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Wikipeek ▸ The free encyclopedia*</div>
+    <nav class="userlinks">
+      <a href="#">Create account</a>
+      <a href="#">Log in</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <aside class="sidebar">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#">Main page</a></li>
+        <li><a href="#">Contents</a></li>
+        <li><a href="#">Current events</a></li>
+        <li><a href="#">Random article</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <h3>Tools</h3>
+      <ul>
+        <li><a href="#">What links here</a></li>
+        <li><a href="#">Related changes</a></li>
+        <li><a href="#">Printable version</a></li>
+      </ul>
+    </aside>
+
+    <article class="article">
+      <h1>Example Article</h1>
+      <div class="tagline">From Wikipeek, the free encyclopedia</div>
+
+      <!-- Info box with an inline SVG image (as a data URI) -->
+      <aside class="infobox" role="complementary">
+        <div class="hd">Example infobox</div>
+        <div class="cell">
+          <img alt="Abstract landscape illustration" src='data:image/svg+xml;utf8,
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="%23a0c4ff"/>
+                  <stop offset="1" stop-color="%23bde0fe"/>
+                </linearGradient>
+              </defs>
+              <rect width="800" height="480" fill="url(%23g)"/>
+              <circle cx="630" cy="110" r="48" fill="%23ffd166"/>
+              <path d="M0 360 Q200 280 400 360 T800 360 V480 H0 Z" fill="%238fd694"/>
+              <path d="M0 400 Q200 340 400 400 T800 400 V480 H0 Z" fill="%2376c893"/>
+            </svg>' />
+          <figcaption>Caption: inline SVG served as an image via data URI.</figcaption>
+        </div>
+        <div class="cell"><b>Type:</b> Demo content</div>
+        <div class="cell"><b>License:</b> This page is for demonstration; no Wikipedia trademarks used.</div>
+      </aside>
+
+      <p><b>Example Article</b> is a sample page that mimics the layout of a typical Wikipedia article using only a single HTML file. It demonstrates a header, sidebar navigation, table of contents, an infobox, images, and standard article sections. You can deploy this file directly to GitHub Pages.</p>
+
+      <nav class="toc" aria-label="Contents">
+        <h3>Contents</h3>
+        <ol>
+          <li><a href="#history">History</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#see-also">See also</a></li>
+          <li><a href="#references">References</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="history">History</h2>
+      <p>The layout on this page is inspired by the Vector skin used by MediaWiki (the software behind Wikipedia). The design has been recreated from scratch without using Wikipedia's trademarks, fonts, or assets.</p>
+
+      <h2 id="features">Features</h2>
+      <ul>
+        <li>Single-file deployment (HTML + CSS)</li>
+        <li>Responsive layout (collapses nicely on mobile)</li>
+        <li>Infobox with an embedded image</li>
+        <li>Table of contents and semantic headings</li>
+        <li>Accessible colors and alt text</li>
+      </ul>
+
+      <h2 id="gallery">Gallery</h2>
+      <p>A second example image, also inline, ensures everything works with no external assets:</p>
+      <figure>
+        <img alt="Geometric abstract shapes" style="max-width:100%; height:auto" src='data:image/svg+xml;utf8,
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420">
+            <rect width="1000" height="420" fill="%23ffffff"/>
+            <rect x="40" y="40" width="260" height="260" fill="%23ffadad"/>
+            <circle cx="520" cy="170" r="130" fill="%23ffd6a5"/>
+            <polygon points="820,300 960,80 680,80" fill="%23caffbf"/>
+            <rect x="60" y="330" width="880" height="20" fill="%23a0c4ff"/>
+          </svg>' />
+        <figcaption>All images are inline SVGs encoded as data URIs for instant portability.</figcaption>
+      </figure>
+
+      <h2 id="see-also">See also</h2>
+      <ul>
+        <li><a href="https://www.mediawiki.org/wiki/MediaWiki" target="_blank" rel="noopener">MediaWiki</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/Main_Page" target="_blank" rel="noopener">Wikimedia Commons</a></li>
+      </ul>
+
+      <h2 id="references">References</h2>
+      <ol>
+        <li>This is a demonstration page created for educational purposes.</li>
+      </ol>
+    </article>
+  </main>
+
+  <footer>
+    *Wikipeek is a Wikipedia‑inspired mockup for demo use. No affiliation. Do not use Wikipedia trademarks (e.g., the puzzle‑globe logo) without permission. Content herein may be reused under CC BY 4.0.
+  </footer>
+</body>
+</html>
